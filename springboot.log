@@ -1,0 +1,78 @@
+2019-07-12 12:04:41.157  INFO 11952 --- [restartedMain] com.Application                          : Starting Application on DESKTOP-P41K0TR with PID 11952 (E:\Code\eapp-corp-quick-start-java\target\classes started by H-PC in E:\Code\eapp-corp-quick-start-java)
+2019-07-12 12:04:41.158  INFO 11952 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-07-12 12:04:41.182  INFO 11952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-07-12 12:04:41.183  INFO 11952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-07-12 12:04:44.358  INFO 11952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-07-12 12:04:44.370  INFO 11952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-07-12 12:04:44.370  INFO 11952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-07-12 12:04:44.374  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-07-12 12:04:44.374  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-07-12 12:04:44.374  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-07-12 12:04:44.376  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-07-12 12:04:44.430  INFO 11952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-07-12 12:04:44.430  INFO 11952 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3247 ms
+2019-07-12 12:04:44.765  INFO 11952 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-12 12:04:44.815  INFO 11952 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2019-07-12 12:04:44.869  INFO 11952 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-12 12:04:44.898  INFO 11952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-12 12:04:44.900  INFO 11952 --- [restartedMain] com.Application                          : Started Application in 3.95 seconds (JVM running for 4.349)
+2019-07-12 13:52:07.270  INFO 14196 --- [restartedMain] com.Application                          : Starting Application on DESKTOP-P41K0TR with PID 14196 (E:\Code\eapp-corp-quick-start-java\target\classes started by H-PC in E:\Code\eapp-corp-quick-start-java)
+2019-07-12 13:52:07.272  INFO 14196 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-07-12 13:52:07.296  INFO 14196 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-07-12 13:52:07.296  INFO 14196 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-07-12 13:52:10.443  INFO 14196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-07-12 13:52:10.454  INFO 14196 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-07-12 13:52:10.454  INFO 14196 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-07-12 13:52:10.458  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-07-12 13:52:10.458  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-07-12 13:52:10.458  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-07-12 13:52:10.460  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-07-12 13:52:10.512  INFO 14196 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-07-12 13:52:10.512  INFO 14196 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3216 ms
+2019-07-12 13:52:10.849  INFO 14196 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-12 13:52:10.897  INFO 14196 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2019-07-12 13:52:10.951  INFO 14196 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-12 13:52:10.981  INFO 14196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-12 13:52:10.983  INFO 14196 --- [restartedMain] com.Application                          : Started Application in 3.92 seconds (JVM running for 4.327)
+2019-07-12 13:52:28.620  INFO 14196 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-12 13:52:28.621  INFO 14196 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-07-12 13:52:28.624  INFO 14196 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2019-07-12 13:52:35.740  INFO 14196 --- [http-nio-8080-exec-2] com.controller.ProjectController         : abcdefg
+2019-07-12 13:52:35.770  INFO 14196 --- [http-nio-8080-exec-2] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-07-12 13:55:27.377  INFO 14196 --- [Thread-13] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-12 13:55:27.380  INFO 14196 --- [Thread-13] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-07-12 13:55:27.498  INFO 14196 --- [restartedMain] com.Application                          : Starting Application on DESKTOP-P41K0TR with PID 14196 (E:\Code\eapp-corp-quick-start-java\target\classes started by H-PC in E:\Code\eapp-corp-quick-start-java)
+2019-07-12 13:55:27.498  INFO 14196 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-07-12 13:55:30.065  INFO 14196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-07-12 13:55:30.066  INFO 14196 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-07-12 13:55:30.066  INFO 14196 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-07-12 13:55:30.066  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-07-12 13:55:30.066  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-07-12 13:55:30.066  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-07-12 13:55:30.067  INFO 14196 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-07-12 13:55:30.077  INFO 14196 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-07-12 13:55:30.077  INFO 14196 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2577 ms
+2019-07-12 13:55:30.162  INFO 14196 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-12 13:55:30.178  INFO 14196 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2019-07-12 13:55:30.197  INFO 14196 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-12 13:55:30.208  INFO 14196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-12 13:55:30.208  INFO 14196 --- [restartedMain] com.Application                          : Started Application in 2.728 seconds (JVM running for 203.552)
+2019-07-12 13:55:30.210  INFO 14196 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-07-12 13:55:38.770  INFO 7676 --- [restartedMain] com.Application                          : Starting Application on DESKTOP-P41K0TR with PID 7676 (E:\Code\eapp-corp-quick-start-java\target\classes started by H-PC in E:\Code\eapp-corp-quick-start-java)
+2019-07-12 13:55:38.772  INFO 7676 --- [restartedMain] com.Application                          : No active profile set, falling back to default profiles: default
+2019-07-12 13:55:38.801  INFO 7676 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-07-12 13:55:38.801  INFO 7676 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-07-12 13:55:41.949  INFO 7676 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-07-12 13:55:41.961  INFO 7676 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-07-12 13:55:41.961  INFO 7676 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-07-12 13:55:41.964  INFO 7676 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-07-12 13:55:41.965  INFO 7676 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-07-12 13:55:41.965  INFO 7676 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-07-12 13:55:41.967  INFO 7676 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-07-12 13:55:42.019  INFO 7676 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-07-12 13:55:42.019  INFO 7676 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3218 ms
+2019-07-12 13:55:42.355  INFO 7676 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-12 13:55:42.403  INFO 7676 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2019-07-12 13:55:42.455  INFO 7676 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-12 13:55:42.484  INFO 7676 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-12 13:55:42.486  INFO 7676 --- [restartedMain] com.Application                          : Started Application in 3.955 seconds (JVM running for 4.359)

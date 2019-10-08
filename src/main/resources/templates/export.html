@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>数据导出</title>
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<link rel="stylesheet" href="js/schedule/schedule.css">
+	<link rel="stylesheet" href="css/export.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<section class="content">
+	<header>
+		<form action="downPage" method="get" id="checkAction">
+			<input class="name" id="name" name="name" th:value="${name}" type="text" placeholder="请输入项目主体">
+			<input class="number" id="number" type="text" name="number" th:value="${number}" placeholder="请输入项目编号">
+			<div class="date">
+				<input type="button" class="data-btn" onclick="chooseDate()" value="选择日期"/><input id='h3Ele' th:value="${stime}" type="text" name="stime" readonly />
+				<div id='schedule-box' class="boxshaw"></div>
+			</div>
+			<input type="hidden" name="pageIndex"  value=""  id="pageIndex">
+			<div style="float: right" class="search_right">
+				<input type="button"  class='search' id="search" value="搜索"/>
+				<input type="button"  class='export btn-info' id="down" value="导出表格"/>
+				<input type="button" id="clear" class="btn btn-primary"  value="clear"/>
+			</div>
+		</form>
+	</header>
+	<table class="table tab-content">
+		<tr>
+			<th>序号</th>
+			<th>项目编号</th>
+			<th>项目主体</th>
+			<th>项目简介</th>
+			<th>项目创建时间</th>
+		</tr>
+		<tr th:each="project,index: ${data} ">
+			<td th:text="${index.count}"></td>
+			<td th:text="${project.getNumber()}"></td>
+			<td th:text="${project.getName()}"></td>
+			<td th:text="${project.getDescribe()}"></td>
+			<td th:text="${project.getCreatedAt()}"></td>
+		</tr>
+	</table>
+	<p>
+		<a href="###" onclick="jump(this)" th:value="1">首页 | </a>
+		<a href="###"  onclick="jump(this)" th:value="${page.pageIndex} - 1"> &gt;&gt;上一页 </a>
+		<a href="###"  onclick="jump(this)" th:value="${page.pageIndex} + 1"> 下一页 >></a>
+		<a href="###"  onclick="jump(this)" th:value="${page.totalPage}"> | 尾页</a>
+	</p >
+	<ul>
+		<li></li>
+	</ul>
+</section>
+</body>
+<script src="js/schedule/schedule.js"></script>
+<script>
+	function jump(e){
+		var page = e.getAttribute("value");
+		$("#pageIndex").val(page);
+		$("#checkAction").submit();
+	}
+</script>
+<script>
+	var flag = false;
+	var scheduleBox = document.getElementById('schedule-box');
+
+	function chooseDate() {
+		if (flag) {
+			scheduleBox.style.display = 'none';
+			flag = false;
+		} else {
+			scheduleBox.style.display = 'block';
+			flag = true;
+		}
+	}
+	// $('.content:not(.data-btn)').on('click', function(e){
+	// 	scheduleBox.style.display = 'none';
+	// 	flag = false;
+	// })
+	$("#clear").on("click",function () {
+		$("#name").val(null);
+		$("#number").val(null);
+		$("#h3Ele").val(null);
+	})
+
+	$("#down").on("click",function () {
+		var name = $("#name").val(), number = $("#number").val(), stime = $("#h3Ele").val();
+		//location.href = "www.baidu.com";
+		location.href="export2007?name="+name+"&number="+number+"&stime="+stime;
+		/*$.ajax({
+            url: "/export2007",
+            type: "get",
+            data: data,
+
+        });*/
+	})
+
+	function getNowFormatDate() {
+		var date = new Date();
+		var seperator1 = "-";
+		var seperator2 = ":";
+		var month = date.getMonth() + 1;
+		if(month<10){
+			month='0'+month;
+		}
+		var strDate = date.getDate();
+		if(strDate<10){
+			strDate='0'+strDate;
+		}
+		var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+		return currentdate;
+	}
+
+	var h3Ele = document.getElementById('h3Ele');
+	//h3Ele.value = getNowFormatDate();
+
+	var mySchedule = new Schedule({
+		el: '#schedule-box',
+		//date: '2018-9-20',
+		clickCb: function(y, m, d) {
+			if(m<10){
+				m='0'+m;
+			}
+			if(d<10){
+				d='0'+d;
+			}
+			document.querySelector('#h3Ele').value = y + '-' + m + '-' + d;
+			scheduleBox.style.display = 'none';
+			flag = false;
+		},
+		nextMonthCb: function(y, m, d) {
+			document.querySelector('#h3Ele').value = y + '-' + m + '-' + d;
+		},
+		nextYeayCb: function(y, m, d) {
+			document.querySelector('#h3Ele').value = y + '-' + m + '-' + d;
+		},
+		prevMonthCb: function(y, m, d) {
+			document.querySelector('#h3Ele').value = y + '-' + m + '-' + d;
+		},
+		prevYearCb: function(y, m, d) {
+			document.querySelector('#h3Ele').value = y + '-' + m + '-' + d;
+		}
+	});
+
+	$("#search").on("click",function () {
+		$("#checkAction").submit();
+	})
+</script>
+</html>

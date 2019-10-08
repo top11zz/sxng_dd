@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <p>index</p>
+<input onclick="aa()" type="button" value="添加进展"></input>
+<input onclick="bb()" type="button" value="添加项目"></input>
+<input onclick="dd()" type="button" value="msg"></input>
+<input onclick="cc()" type="button" value="导出项目"></input>
+</body>
+</html>
+<script>
+        function aa(){
+            var json ={ projectId:6,content:"进展1",statusText:"状态1",tailAfterAt:"2019-01-01 00:00:00",tailAfters:[{projectId:6,userId:4,name:"qq"},{projectId:6,userId:5,name:"xx"}]};
+            $.ajax({
+                url: "/addProgress",
+                type: "post",
+                dataType: "json",
+                contentType: 'application/json;charset=utf-8',
+                async: true,
+                data: JSON.stringify(json),
+            });
+        }
+        function bb() {
+
+            //var json = {name:"pro5",describe:null,note:null,createUserId:"1",createdAt:"2019-07-18 00:00:00",firstLinkmen:[{name:"aa",duty:"职务...",phone:"1388776655,1399887766"},{name:"bb",duty:"职务2...",phone:"1388776655,1399887766"}],principals:[{userId:4,name:"qop"},{userId:5,name:"nec"}]}
+            //var json = {name:"pro11",describe:null,note:null,createUserId:"1",createdAt:"2019-07-18 00:00:00",createUserName:"aaa",firstLinkmen:null,principals:null}
+            var json = {id:null, number:'null', name:'上传项目', describe:'', note:'', createUserId:'275559630221548178', createUserName:'史浩浩', createdAt:'2019-07-22 10:49', updatedAt:'null', deletedAt:'null', palUserIds:'null',  firstLinkmen:[], principals:[{id:null, projectId:null, userId:'275559630221548178', name:'史浩浩'}]}
+
+                $.ajax({
+                    url: "/addProject",
+                    type: "post",
+                    dataType: "json",
+                    contentType: 'application/json;charset=utf-8',
+                    async: true,
+                    data: JSON.stringify(json),
+                    success:function (res) {
+                        alert(res);
+                    }
+                });
+        }
+        function dd() {
+            alert(2);
+            //var json = {name:"pro5",describe:null,note:null,createUserId:"1",createdAt:"2019-07-18 00:00:00",firstLinkmen:[{name:"aa",duty:"职务...",phone:"1388776655,1399887766"},{name:"bb",duty:"职务2...",phone:"1388776655,1399887766"}],principals:[{userId:4,name:"qop"},{userId:5,name:"nec"}]}
+            //var json = {name:"pro11",describe:null,note:null,createUserId:"1",createdAt:"2019-07-18 00:00:00",createUserName:"aaa",firstLinkmen:null,principals:null}
+            var json={msg:{msgtype:"action_card",action_card:{title:"是透出到会话列表和通知的文案",markdown:"支持markdown格式的正文内容",single_title:"查看详情",single_url:"https://open.dingtalk.com"}},accessToken:"0fffaa77b5b637a48c7659e65c1d890e"};
+            //var json={accessToken:"aaa"};
+           // var json={accessToken:"aba"};
+
+                $.ajax({
+                    url: "/pushMsg",
+                    type: "post",
+                    dataType: "json",
+                    contentType: 'application/json;charset=utf-8',
+                    async: true,
+                    data: JSON.stringify(json),
+                    success:function (res) {
+                        alert(res);
+                    }
+                });
+        }
+        function cc(){
+         alert(1);
+            window.location.href("/export");
+        }
+</script>

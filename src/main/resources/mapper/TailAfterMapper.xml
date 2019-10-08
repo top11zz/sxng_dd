@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TailAfterDao">
+  <resultMap id="BaseResultMap" type="com.entity.TailAfter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="progress_id" jdbcType="INTEGER" property="progressId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_id, progress_id, user_id, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tail_after
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insTailAfter">
+    insert into tail_after
+    (`project_id`,`progress_id`,`user_id`,`name`)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+   (#{item.projectId},#{item.progressId},#{item.userId},#{item.name})
+    </foreach>
+  </insert>
+
+  <select id="findAfterByProgId" resultMap="BaseResultMap">
+    select * from tail_after where progress_id=#{progId}
+  </select>
+</mapper>

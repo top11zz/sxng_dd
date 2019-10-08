@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PrincipalDao">
+  <resultMap id="BaseResultMap" type="com.entity.Principal">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    `id`, `project_id`, `user_id`, `name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from principal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="findPrinByProId" resultMap="BaseResultMap">
+    select * from principal where project_id = #{proId}
+  </select>
+
+  <insert id="insPrinByPro">
+    insert into principal
+    (`project_id`,`name`,`user_id`)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.projectId},#{item.name},#{item.userId})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,71 @@
+.content {
+	width: 1000px;
+	margin: auto;
+	font-size: 14px;
+	color: #333;
+}
+
+header {
+	padding: 30px 0 15px 0;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+	z-index: -1;
+}
+
+header input {
+	width: 150px;
+	height: 30px;
+	padding: 0 8px;
+	border: 1px solid #ccc;
+	outline: none;
+}
+
+header input{
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 4px;
+	outline: none;
+}
+
+.date{
+	display: inline-block;
+	position: relative;
+}
+.date input{
+	border-radius: 0;
+	background-color: #fff;
+	margin-left: 20px;
+}
+.date #schedule-box{
+	position: absolute;
+	top: 40px;
+	left: 20px;
+	display: none;
+	z-index: 99;
+	background-color: #fff;
+}
+
+#h3Ele{
+	display: inline-block;
+	border: none;
+	width: 100px;
+	height: 30px;
+	margin-left: 0px;
+	text-align: left;
+}
+
+.search{
+	background: #33bbff;
+	color: #fff;
+	margin-left: 40px;
+	width: 50px;
+}
+/*.export{
+	background:;
+}*/
+
+.search_right{display: flex;}
+.search_right input{display: block;}
+.search_right input + input{margin-left: 10px;}

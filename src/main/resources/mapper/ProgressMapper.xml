@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProgressDao">
+  <resultMap id="BaseResultMap" type="com.entity.Progress">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="status_text" jdbcType="VARCHAR" property="statusText" />
+    <result column="tail_after_at" jdbcType="TIMESTAMP" property="tailAfterAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="after_user_name" property="afterUserNames" />
+    <result column="after_user_id" property="afterUserIds" />
+    <result column="prin_user_name" property="prinUserIds" />
+    <result column="prin_user_id" property="prinUserIds" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `project_id`, `content`, `status_text`, `tail_after_at`, `created_at`, `updated_at`, `deleted_at`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from progress
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findProgressByProId" resultMap="BaseResultMap">
+    select p.*,GROUP_CONCAT(a.user_id)as after_user_id,GROUP_CONCAT(a.name)as after_user_name
+    from progress p left join tail_after a on p.id = a.progress_id
+    where p.project_id = #{proId} GROUP BY p.id
+    order by p.created_at desc
+  </select>
+
+  <select id="findProgressByProIdCount" resultType="int">
+    select count(*) from (select p.*,GROUP_CONCAT(a.user_id)as after_user_id,GROUP_CONCAT(a.name)as after_user_name
+    from progress p left join tail_after a on p.id = a.progress_id
+    where p.project_id = #{proId} GROUP BY p.id)s
+  </select>
+
+  <select id="findProgressById" resultMap="BaseResultMap">
+    select g.*,GROUP_CONCAT(DISTINCT c.user_id) as prin_user_id,GROUP_CONCAT(DISTINCT c.name) as prin_user_name,GROUP_CONCAT(DISTINCT a.name) as after_user_name,GROUP_CONCAT(DISTINCT a.user_id) as after_user_id
+    from progress g LEFT JOIN principal c on g.project_id = c.project_id left join tail_after a on g.id = a.progress_id
+    where g.id = #{id}
+    GROUP BY g.id;
+
+  </select>
+
+  <update id="editProgress">
+    update  progress set `content`=#{content}, `status_text`=#{statusText},`updated_at`=now(),`tail_after_at`=#{tailAfterAt}
+    where id = #{id}
+  </update>
+
+  <insert id="insProgress" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    insert into progress
+    (`project_id`,`content`,`status_text`,`tail_after_at`,`created_at`,`updated_at`)
+    values
+    (#{projectId},#{content},#{statusText},#{tailAfterAt},now(),now())
+  </insert>
+</mapper>

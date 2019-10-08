@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProjectDao">
+  <resultMap id="BaseResultMap" type="com.entity.Project">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="create_user_id" jdbcType="VARCHAR" property="createUserId" />
+    <result column="created_at" property="createdAt" />
+    <result column="updated_at" property="updatedAt" />
+    <result column="deleted_at" property="deletedAt" />
+    <result column="pal_name" property="palName" />
+    <result column="after_name" property="afterName" />
+    <result column="pal_users" property="palUserIds" />
+    <result column="after_users" property="afterUserIds" />
+    <result column="create_user_name" property="createUserName" />
+    <result column="tips" property="tips" />
+    <result column="tip_name" property="tipName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `number`, `name`, `describe`, `note`, `create_user_id`, `create_user_name`,`created_at`, `updated_at`, `deleted_at`, `tips`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectById" resultMap="BaseResultMap">
+    select  <include refid="Base_Column_List" /> from project where id = #{id}
+
+  </select>
+
+  <select id="findProByUser" resultType="int">
+      select DISTINCT s.id from
+      (select j.*,p.user_id as uid1 ,a.user_id as uid2 from project j left JOIN principal p on j.id = p.project_id left JOIN tail_after a on j.id = a.project_id
+        <where>
+          <if test="name!=null and ''!=name">
+            j.`name` like CONCAT('%',#{name},'%')
+          </if>
+          <if test="tip!=null and 0!=tip">
+            and j.`tips` like CONCAT('%',#{tip},'%')
+          </if>
+        </where>
+        order by j.created_at desc
+      ) s
+      where s.create_user_id = #{userId} or s.uid1 = #{userId} or s.uid2 = #{userId}
+  </select>
+
+  <select id="findProByRole" resultType="int">
+      select DISTINCT s.id from
+      (select j.*,p.user_id as uid1 ,a.user_id as uid2  from project j left JOIN principal p on j.id = p.project_id left JOIN tail_after a on j.id = a.project_id
+       <where>
+          <if test="name!=null and ''!=name">
+            j.`name` like CONCAT('%',#{name},'%')
+          </if>
+          <if test="tip!=null and 0!=tip">
+            and j.`tips` like CONCAT('%',#{tip},'%')
+          </if>
+        </where>
+        order by j.created_at desc
+      ) s
+  </select>
+
+  <select id="findProByUser2" resultType="integer">
+      select DISTINCT s.id from
+      (select j.*,p.user_id as uid1 from project j left JOIN principal p on j.id = p.project_id ) s
+      where s.create_user_id = #{userId} or s.uid1 = #{userId}
+  </select>
+
+  <select id="findProByIds" resultMap="BaseResultMap">
+    select  s.*,GROUP_CONCAT(DISTINCT s.name1) as pal_name,GROUP_CONCAT(DISTINCT s.name2) as after_name ,GROUP_CONCAT(DISTINCT s.p_uids) as pal_users ,GROUP_CONCAT(DISTINCT s.a_uids) as after_users ,t.tip_name from
+    (select j.*,p.name as name1 ,a.name as name2,p.user_id as p_uids ,a.user_id as a_uids from project j left JOIN principal p on j.id = p.project_id left JOIN tail_after a on j.id = a.project_id ) s left join project_tip t on s.tips = t.tip_pro_id
+    where  s.id in
+    <foreach item="id" collection="ids" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    GROUP BY s.id
+    order by s.created_at desc
+    limit #{first},#{last}
+  </select>
+
+  <select id="findProByIdsCount" resultType="int">
+    select count(*) from
+    (select j.*,p.name as name1 ,a.name as name2,p.user_id as p_uids ,a.user_id as a_uids from project j left JOIN principal p on j.id = p.project_id left JOIN tail_after a on j.id = a.project_id  GROUP BY j.id) s
+    where  s.id in
+    <foreach item="id" collection="array" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    order by s.created_at desc
+  </select>
+
+  <select id="findProById" resultMap="BaseResultMap">
+    select  s.*,GROUP_CONCAT(DISTINCT s.name1) as pal_name,GROUP_CONCAT(DISTINCT s.name2) as after_name ,GROUP_CONCAT(DISTINCT s.p_uids) as pal_users ,GROUP_CONCAT(DISTINCT s.a_uids) as after_users ,t.tip_name from
+    (select j.*,p.name as name1 ,a.name as name2,p.user_id as p_uids ,a.user_id as a_uids from project j left JOIN principal p on j.id = p.project_id left JOIN tail_after a on j.id = a.project_id ) s left join project_tip t on s.tips = t.tip_pro_id
+    where  s.id = #{id}
+    GROUP BY s.id
+  </select>
+
+  <select id="findProjectIds" resultType="int">
+    select id from project
+    <where>
+      <if test="number!=null and ''!=number">
+        number like concat('%',#{number},'%')
+      </if>
+      <if test="name!=null and ''!=name">
+        and `name` like concat('%',#{name},'%')
+      </if>
+      <if test="stime!=null and ''!=stime">
+        and DATE_FORMAT(created_at,'%Y-%m-%d') = #{stime}
+      </if>
+    </where>
+  </select>
+
+  <select id="findProTips" resultMap="BaseResultMap">
+    select tip_pro_id as tips,tip_name from project_tip ;
+  </select>
+
+    <!--***** update ********-->
+  <update id="editProject">
+    update project set `name` = #{name} , `describe` = #{describe} , note = #{note} , tips =#{tips}, updated_at = now() where id = #{id};
+  </update>
+  <!--*******insert*******-->
+  <insert id="insProject" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+    insert into project
+    (`number`,`name`,`describe`,`note`,`create_user_id`,`create_user_name`,`created_at`,`updated_at`,`tips`)
+    values
+    (#{number},#{name},#{describe},#{note},#{createUserId},#{createUserName},#{createdAt},now(),#{tips});
+  </insert>
+
+</mapper>

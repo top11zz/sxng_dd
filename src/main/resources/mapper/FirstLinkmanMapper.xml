@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.FirstLinkmanDao">
+  <resultMap id="BaseResultMap" type="com.entity.FirstLinkman">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="duty" jdbcType="VARCHAR" property="duty" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.entity.FirstLinkman">
+    <result column="phone" jdbcType="LONGVARCHAR" property="phone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_id, name, duty
+  </sql>
+  <sql id="Blob_Column_List">
+    phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from first_linkman
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findFirstLinkmenByProId" resultMap="ResultMapWithBLOBs">
+        select * from first_linkman where project_id = #{proId}
+  </select>
+  <insert id="insLinkmanByPro">
+    insert into first_linkman
+     (`project_id`,`name`,`duty`,`phone`)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.projectId},#{item.name},#{item.duty},#{item.phone})
+    </foreach>
+  </insert>
+</mapper>
